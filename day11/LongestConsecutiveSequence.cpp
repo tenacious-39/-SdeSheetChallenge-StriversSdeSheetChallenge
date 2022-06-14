@@ -16,6 +16,24 @@ public:
     }
 };
 
+// optimal approach 2::
+class Solution {
+public:
+    int longestConsecutive(vector<int>& nums) {
+        if(nums.size() == 0) return 0;
+       set<int> st;
+        int ans = INT_MIN;
+        for(auto it : nums) st.insert(it);
+        for(auto it : nums){
+            if(st.count(it-1) == 0){
+                int cnt = 1;
+                int num = it;
+                while(st.count(num+1)) cnt++, num++;
+                ans= max(ans, cnt);
+            }
+        } return ans;
+    }
+};
 // My approach:
 class Solution {
 public:

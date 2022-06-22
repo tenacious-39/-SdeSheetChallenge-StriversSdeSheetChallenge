@@ -16,12 +16,12 @@ public:
         dummy->next = head;
         ListNode *cur = dummy, *nex = dummy, *pre =dummy;
         int count = 0;
-        while(cur){
+        while(cur->next){
             count++;
             cur = cur->next;
         }
         
-        while(count > k){
+        while(count >= k){
             cur = pre->next;
             nex = cur->next;
             //cout << cur->next->val << " " << nex->next->val << "\n";

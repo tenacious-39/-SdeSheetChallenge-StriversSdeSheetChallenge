@@ -1,4 +1,33 @@
-
+/// Brute force:
+class Solution {
+    void permute(vector<int> &nums, int n, vector<int> &ds, vector<bool> mp, vector<vector<int>> &ans){
+        if(ds.size() == n){
+            ans.push_back(ds);
+            return;
+        }
+        
+        for(int i = 0; i < n; i++){
+            if(!mp[i]){
+                mp[i]  = true;
+                ds.push_back(nums[i]);
+                permute(nums, n, ds, mp, ans);
+                mp[i] = false;
+                ds.pop_back();
+            }
+        }
+        
+        
+    }
+public:
+    vector<vector<int>> permute(vector<int>& nums) {
+        vector<vector<int>> ans;
+        int n = nums.size();
+        vector<int> ds;
+        vector<bool> mp(n, false);
+        permute(nums,n, ds, mp, ans);
+        return ans;
+    }
+};
 
 
 /// My approah:
